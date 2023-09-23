@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Breast Cancer Detection</title>
+    <style>
+        h1 {
+            background: #dd276a;
+            color: white;
+            text-align: center;
+            margin-top: 0%;
+            padding: 15px;
+            font-size: 2rem;
+        }
+
+        body {
+            margin: 0%;
+        }
+
+        img {
+            width: 500px;
+            height: 500px;
+            display: inline;
+            margin-left: 30px;
+            background-color: transparent;
+        }
+        div{
+            display: inline;
+            position: absolute;
+            top: 60px;
+            left: 700px;
+            font-size: 1.5rem;
+            color:#0c0b0b;
+        }
+        #p1{
+            margin-top: 5px;
+            text-align: left;
+        }
+        label{ 
+            background-color: rgba(221, 39, 106);
+            color: white;
+            border-radius: 12px;
+            padding: 15px;
+            padding-left: 20px;
+            padding-right: 20px;
+            font-weight: 700;
+        }
+        input{
+            position: relative;
+            top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Detect the Tumor in the Breast</h1>
+    <img src="img2.png" style="margin-bottom: 34px;">
+    <div>
+        <h2>Drop in the scan for prediction.</h2>
+        <p>Upload your image</p>
+        <input type="file" id="imageInput" style="display: none;">
+        <label for="imageInput">Choose...</label>
+
+        <img id="previewImage" src="" style="display: none; width: 200px; height: 200px; margin-top: 20px; margin-left: 0%;">
+    </div>
+
+    <script>
+        const imageInput = document.getElementById('imageInput');
+        const previewImage = document.getElementById('previewImage');
+        
+        imageInput.addEventListener('change', () => {
+            const file = imageInput.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.addEventListener('load', () => {
+                    previewImage.src = reader.result;
+                    previewImage.style.display = 'block';
+                    document.getElementsByTagName('p')[1].style.display = 'block';
+                });
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+</body>
+
+</html>
